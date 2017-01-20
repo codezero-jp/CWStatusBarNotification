@@ -185,7 +185,7 @@ static void cancel_delayed_block(CWDelayedBlockHandle delayedHandle)
 
 @implementation CWStatusBarNotification
 
-@synthesize notificationLabel, notificationLabelBackgroundColor, notificationLabelTextColor, notificationLabelFont, notificationWindow, customView;
+@synthesize notificationLabel, notificationLabelBackgroundColor, notificationLabelTextColor, notificationLabelFont, notificationWindow, customView, notificationWindowLevel;
 
 @synthesize statusBarView;
 
@@ -213,6 +213,7 @@ static void cancel_delayed_block(CWDelayedBlockHandle delayedHandle)
         self.notificationAnimationOutStyle = CWNotificationAnimationStyleBottom;
         self.notificationAnimationType = CWNotificationAnimationTypeReplace;
         self.notificationIsDismissing = NO;
+        self.notificationWindowLevel = UIWindowLevelStatusBar;
         self.isCustomView = NO;
         self.preferredStatusBarStyle = UIStatusBarStyleDefault;
 
@@ -382,7 +383,7 @@ static void cancel_delayed_block(CWDelayedBlockHandle delayedHandle)
     self.notificationWindow.backgroundColor = [UIColor clearColor];
     self.notificationWindow.userInteractionEnabled = YES;
     self.notificationWindow.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    self.notificationWindow.windowLevel = UIWindowLevelStatusBar;
+    self.notificationWindow.windowLevel = self.notificationWindowLevel;
     CWViewController *rootViewController = [[CWViewController alloc] init];
     [rootViewController setSupportedInterfaceOrientations:self.supportedInterfaceOrientations];
     rootViewController.preferredStatusBarStyle = self.preferredStatusBarStyle;

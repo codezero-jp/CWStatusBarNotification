@@ -114,6 +114,8 @@ typedef NS_ENUM(NSInteger, CWNotificationAnimationType) {
 @property (nonatomic) BOOL notificationIsDismissing;
 /// The window that holds the notification.
 @property (strong, nonatomic) CWWindowContainer *notificationWindow;
+/// The level of window that holds the notification. Default is UIWindowLevelStatusBar
+@property (assign, nonatomic) UIWindowLevel notificationWindowLevel;
 
 /**
  * The background color of the notification label. Default value is the tint
